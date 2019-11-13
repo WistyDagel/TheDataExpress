@@ -1,5 +1,5 @@
 {
-    "titles" : ["Login Page", "Edit Your Answers", "Logged Out"],
+    "titles" : ["Login Page", "Edit Your Answers", "Logged Out", "Create Your Account"],
     "questions": ["What is your name?", "What is your quest?", "What is your favorite color?"],
     "formData": ["Username: ", "Password: ", "Email: ", "Age: ", "Answer to question 1: ", "Answer to question 2: ", "Answer to question 3: "],
     "editData": [
