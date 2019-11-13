@@ -1,1 +1,0 @@
-"C:\Program Files\MongoDB\Server\4.2\bin\mongod" --dbpath "C:\Users\Jeffrey Rehm\Documents\Homework\Q5\Interactive Web Dev\Node\TheDataExpress\data"
