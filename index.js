@@ -16,5 +16,9 @@ app.use(express.static(path.join(__dirname + '/public')));
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 
 app.get('/', routes.index);
+app.get('/create', routes.create);
+app.get('/edit', routes.edit);
+app.get('/loggedOut', routes.loggedOut);
+app.get('/meme', routes.meme);
 
 app.listen(3000);
