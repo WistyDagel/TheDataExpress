@@ -1,5 +1,8 @@
 const config = require('../config');
 
 exports.index = (req, res) => {
-    res.send('Home Page')
+    res.render('Home Page', {
+        "title": config['titles'][0],
+        "config": config
+    });
 };
