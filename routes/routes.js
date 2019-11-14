@@ -25,8 +25,12 @@ const config = require('../config');
 // var Account = mongoose.model('Account_Collection', accountSchema);
 
 exports.index = (req, res) => {
-    res.render('Home Page', {
+    res.render('index', {
         "title": config['titles'][0],
         "config": config
     });
+};
+
+exports.create = (req, res) => {
+    res.render('Create an Account')
 };
