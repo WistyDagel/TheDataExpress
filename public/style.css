@@ -97,3 +97,10 @@ input[type=submit]:hover {
     display: inline;
 }
 
+#divider{
+    background: transparent;
+    width: auto;
+    height: 10px;
+    border-bottom: 5px dotted darkgoldenrod;
+    border-top: 5px dotted darkgoldenrod;
+}

@@ -36,8 +36,33 @@ exports.index = (req, res) => {
 
 exports.create = (req, res) => {
     res.render('create', {
-        "title": config['menu'][1][0],
+        "title": config['menu'][1],
+        "edit": config['menu'][2],
         "questions": config['formQuestions'],
         "formData": config['formData']
+    });
+};
+
+exports.edit = (req, res) => {
+    previousData = [
+        req.body.username, 
+        req.body.password, 
+        req.body.email, 
+        req.body.age, 
+    ]
+    
+    previousAnswers = [
+        req.body.answer1, 
+        req.body.answer2, 
+        req.body.answer3
+    ]
+
+    res.render('edit', {
+        "pData": previousData,
+        "pAnswers": previousAnswers,
+        "title": config['menu'][2][0],
+        "data": config['editData'][0],
+        "answers": config['editData'][1],
+        "questions": config['questions']
     });
 };

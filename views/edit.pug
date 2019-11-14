@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    // Creates the form and populates it
+    form(autocomplete="false" id='form' method="POST")
+        // Previous Form Data
+        each i, index in pData
+            p #{data[index][0]}&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;#{pData[index]}
+        p
+        // New Form Data
+        - var u = ["username", "password", "email", "age"]
+        each d, index in data
+            h3 #{data[index][1]}&nbsp;&nbsp;&nbsp;&nbsp;
+                if (u[index] != "password")
+                    input(type='text' name=u[index] autocomplete='off')
+                else
+                    input(type='password' name=u[index] autocomplete='off')
+
+        div(id='divider')
+
+        // Previous Answers
+        each i, index in pAnswers
+            p #{answers[index][0]}&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;#{pAnswers[index]}
+        //New Answers
+        - var counter = 1
+        each a, index in answers
+            h3 #{questions[index]}
+            p #{answers[index][1]}&nbsp;&nbsp;&nbsp;&nbsp;
+                input(type='text' name=`answer${counter}` autocomplete='off')
+            - counter += 1

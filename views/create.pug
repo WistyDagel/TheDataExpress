@@ -1,19 +1,22 @@
 extends layout
 
 block content
-    h1 #{title}
-    form(autocomplete='false' id='form' method='post' action='/edit')
+    h1 #{title[0]}
+    form(autocomplete='false' id='form' method='POST' action=`/${edit[1]}`)
         // Creates the form data stuff
         for data in formData
-            p #{data}&nbsp;
-                input(type='text' name=data autocomplete='off')
+            p #{data}&nbsp;&nbsp;&nbsp;
+                if (data != 'Password') 
+                    input(type='text' name=data.toLowerCase() autocomplete='off')
+                else
+                    input(type="password" name=data.toLowerCase() autocomplete='off')
 
         // Creates the questions
         for question in questions
-            h3 #{question[0]}&nbsp;
+            h3 #{question[0]}&nbsp;&nbsp;&nbsp;
             p
-            p #{question[1]}&nbsp;
-                input(type='text' autocomplete='off')
+            p #{question[1]}&nbsp;&nbsp;&nbsp;
+                input(type='text' name=question[2] autocomplete='off')
 
         p
             input(type='submit' value='Create Account!')
