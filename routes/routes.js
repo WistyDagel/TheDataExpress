@@ -26,7 +26,10 @@ const config = require('../config');
 
 exports.index = (req, res) => {
     res.render('index', {
-        "title": config['titles'][0],
+        "title": config['menu'][0][0],
+        "username": config['formData'][0],
+        "password": config['formData'][1],
+        "noAccount": config['homePage'][0],
         "config": config
     });
 };

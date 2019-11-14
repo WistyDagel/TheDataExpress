@@ -2,3 +2,14 @@ extends layout
 
 block content
     h1 #{title}
+
+    form(id='form' method='post' action='/edit')
+        p #{username}
+            input(type='text', name='name')
+        p #{password}
+            input(type='text', name='name')
+        p
+            input(id='btn', type='submit', value='Log in')
+
+    a(href=config['menu'][1][1])
+        div(class='create_account') #{noAccount}
