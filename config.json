@@ -1,6 +1,19 @@
 {
-    "titles" : ["Login Page", "Edit Your Answers", "Logged Out"],
+    "titles" : ["Home Page", "Edit Your Answers", "Logged Out", "Create Your Account"],
     "questions": ["What is your name?", "What is your quest?", "What is your favorite color?"],
     "formData": ["Username: ", "Password: ", "Email: ", "Age: ", "Answer to question 1: ", "Answer to question 2: ", "Answer to question 3: "],
+    "editData": [
+                    [
+                        ["Previous Username: ", "New Username: "], 
+                        ["Previous Password: ", "New Password: "], 
+                        ["Previous Email: ", "New Email: "], 
+                        ["Previous Age: ", "New Age: *Winky Face*"]
+                    ],
+                    [
+                        ["Previous Answer to Question 1: ", "New Answer to Question 1: "], 
+                        ["Previous Answer to Question 2: ", "New Answer to Question 2: "], 
+                        ["Previous Answer to Question 3: ", "New Answer to Question 3: "]
+                    ]
+                ],
     "funnyResponses": ["Red no yel.... AHHHHHHHHHHHHHHHHHHHHHHHHH", ["African or European Swallow?", "What? I don't know that.... AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"]]
 }
