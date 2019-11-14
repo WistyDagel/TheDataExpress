@@ -32,5 +32,9 @@ exports.index = (req, res) => {
 };
 
 exports.create = (req, res) => {
-    res.render('Create an Account')
+    res.render('create', {
+        "title": config['titles'][3],
+        "questions": config['formQuestions'],
+        "formData": config['formData']
+    });
 };
