@@ -1,6 +1,7 @@
 extends layout
 
 block content
+    h1 #{title}
     form(autocomplete='false' id='form' method='post' action='/edit')
         // Creates the form data stuff
         for data in formData

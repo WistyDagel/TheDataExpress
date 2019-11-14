@@ -36,7 +36,7 @@ exports.index = (req, res) => {
 
 exports.create = (req, res) => {
     res.render('create', {
-        "title": config['titles'][3],
+        "title": config['menu'][1][0],
         "questions": config['formQuestions'],
         "formData": config['formData']
     });
