@@ -7,7 +7,8 @@
         ["Meme", "meme"]
     ],
     "questions": ["What is your name?", "What is your quest?", "What is your favorite color?"],
-    "formData": ["Username: ", "Password: ", "Email: ", "Age: ", "Answer to question 1: ", "Answer to question 2: ", "Answer to question 3: "],
+    "formData": ["Username: ", "Password: ", "Email: ", "Age: "],
+    "formQuestions": [["What is your name?" ,"Answer to question 1: "], ["What is your quest?" ,"Answer to question 2: "], ["What is your favorite color?" ,"Answer to question 3: "]],
     "editData": [
                     [
                         ["Previous Username: ", "New Username: "], 
