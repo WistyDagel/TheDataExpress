@@ -53,6 +53,7 @@ const createAccount = (req, res) => {
     });
     account.save((err, account) => {
         if (err) return console.error(err);
+        console.log(account._id);
         console.log(account.username);
         console.log(account.hashedPassword);
         console.log(account.email);
@@ -92,6 +93,34 @@ exports.edit = (req, res) => {
         "data": config['editData'][0],
         "answers": config['editData'][1],
         "questions": config['questions']
+    });
+};
+
+exports.validateCredentials = (req, res) => {
+    console.log('\n' + req.body.username);
+    console.log(req.body.password);
+
+    Account.findOne({'username': req.body.username}, function (err, account) {
+        if (!account) {
+            res.redirect('/');
+        } else {
+            console.log(account);
+            bcrypt.compare(req.body.password, account.hashedPassword, (err2, result) => {
+                console.log(result);
+                if (result) {
+                    req.session.user = {
+                        isAuthenticated: true,
+                        username: req.body.username
+                    };
+                    res.render('home', {
+                        title: 'Home',
+                        account: account
+                    });
+                } else {
+                    res.redirect('/');
+                }
+            });
+        }
     });
 };
 

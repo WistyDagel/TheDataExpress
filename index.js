@@ -35,20 +35,12 @@ app.get('/create', routes.create);
 app.post('/create', urlEncodedParser, routes.parseCreateData);
 app.post('/edit', urlEncodedParser, routes.edit);
 app.get('/home', checkAuth, routes.home);
-app.post('/home', routes.home);
+app.post('/home', urlEncodedParser, routes.validateCredentials);
 app.get('/loggedOut', routes.loggedOut);
 // app.get('/meme', routes.meme);
 
-app.post('/', urlEncodedParser, (req, res) => {
-    if(req.body.username == 'user' && req.body.password == 'pass'){
-        req.session.user = {
-            isAuthenticated: true,
-            username: req.body.username
-        };
-        res.redirect('/home');
-    } else {
-        res.redirect('/');
-    }
-});
+// app.post('/', urlEncodedParser, (req, res) => {
+    
+// });
 
 app.listen(3000);
