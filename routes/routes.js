@@ -74,16 +74,15 @@ exports.parseCreateData = (req, res) => {
 
 exports.edit = (req, res) => {
     previousData = [
-        req.body.username, 
-        req.body.password, 
-        req.body.email, 
-        req.body.age, 
+        req.session.user.account.username, 
+        req.session.user.account.email, 
+        req.session.user.account.age, 
     ]
     
     previousAnswers = [
-        req.body.answer1, 
-        req.body.answer2, 
-        req.body.answer3
+        req.session.user.account.answer1, 
+        req.session.user.account.answer2, 
+        req.session.user.account.answer3
     ]
 
     res.render('edit', {
@@ -100,7 +99,7 @@ exports.validateCredentials = (req, res) => {
     console.log('\n' + req.body.username);
     console.log(req.body.password);
 
-    Account.findOne({'username': req.body.username}, function (err, account) {
+    Account.findOne({'username': req.body.username}, (err, account) => {
         if (!account) {
             res.redirect('/');
         } else {
@@ -149,4 +148,21 @@ exports.loggedOut = (req, res) => {
             res.redirect('/');
         }
     });
+}
+
+exports.parseUpdateData = (req, res) => {
+
+    bcrypt.hash(req.body.password, null, null, (err, hash) => {
+        req.body.hashedPassword = hash;
+        updateAccount(req, res);
+    });
+}
+
+const updateAccount = (req, res) => {
+    var myQuery = { 'username': req.session.user.account.username };
+    var newValues = { $set: {'username': req.body.username, 'hashedPassword': req.body.hashedPassword, 'email': req.body.email, 'age': req.body.age, 'answer1': req.body.answer1, 'answer2': req.body.answer2, 'answer3': req.body.answer3}};
+    Account.updateOne(myQuery, newValues, (err, result) =>{
+        if (err) throw err;
+    });
+    res.redirect('/loggedOut');
 }

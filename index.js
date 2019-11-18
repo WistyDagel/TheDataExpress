@@ -38,6 +38,7 @@ app.post('/edit', urlEncodedParser, routes.edit);
 app.get('/home', checkAuth, routes.home);
 app.post('/home', urlEncodedParser, routes.validateCredentials);
 app.get('/loggedOut', routes.loggedOut);
+app.post('/update', urlEncodedParser, routes.parseUpdateData);
 // app.get('/meme', routes.meme);
 
 // app.post('/', urlEncodedParser, (req, res) => {

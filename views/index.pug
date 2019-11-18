@@ -7,7 +7,19 @@ block content
         p #{username}: 
             input(type='text' name='username' autocomplete='off')
         p #{password}: 
-            input(type='text' name='password' autocomplete='off')
+            input(id='password' type='password' name='password' autocomplete='off')
+            input(type='checkbox' onClick='togglePassword()')
+            b Show Password
+            script(type='text/javascript').
+                function togglePassword() {
+                   var elem = document.getElementById('password');
+                   console.log(elem.type);
+                   if (elem.type === 'password') {
+                       elem.type = 'text';
+                   } else {
+                       elem.type = 'password';
+                   }
+                }
         p
             input(id='btn' type='submit' value='Log In')
 

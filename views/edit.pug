@@ -2,29 +2,39 @@ extends layout
 
 block content
     // Creates the form and populates it
-    form(autocomplete="false" id='form' method="POST")
-        // Previous Form Data
-        each i, index in pData
-            p #{data[index][0]}&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;#{pData[index]}
-        p
+    form(autocomplete="false" id='form' method="POST" action='/update')
         // New Form Data
         - var u = ["username", "password", "email", "age"]
+        - var counter1 = 0
         each d, index in data
-            h3 #{data[index][1]}&nbsp;&nbsp;&nbsp;&nbsp;
-                if (u[index] != "password")
-                    input(type='text' name=u[index] autocomplete='off')
+            h3 #{data[index][0]}&nbsp;&nbsp;&nbsp;&nbsp;
+                if (u[index] != "password") 
+                    input(type='text' name=u[index] value=pData[counter1] autocomplete='off')
                 else
-                    input(type='password' name=u[index] autocomplete='off')
+                    input(id='password' type='password' name=u[index] autocomplete='off')
+                    input(type='checkbox' onClick='togglePassword()')
+                    b Show Password
+                    script(type='text/javascript').
+                        function togglePassword() {
+                            var elem = document.getElementById('password');
+                            console.log(elem.type);
+                            if (elem.type === 'password') {
+                                elem.type = 'text';
+                            } else {
+                                elem.type = 'password';
+                            }
+                        }
+                    - counter1 -= 1
+            - counter1 += 1
 
         div(id='divider')
 
-        // Previous Answers
-        each i, index in pAnswers
-            p #{answers[index][0]}&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;#{pAnswers[index]}
         //New Answers
         - var counter = 1
         each a, index in answers
             h3 #{questions[index]}
-            p #{answers[index][1]}&nbsp;&nbsp;&nbsp;&nbsp;
-                input(type='text' name=`answer${counter}` autocomplete='off')
+            p #{answers[index][0]}&nbsp;&nbsp;&nbsp;&nbsp;
+                input(type='text' name=`answer${counter}` value=pAnswers[index] autocomplete='off')
             - counter += 1
+        p
+            input(type='submit' name='submit' value='Update Account')

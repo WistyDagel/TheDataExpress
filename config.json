@@ -12,15 +12,15 @@
     "formQuestions": [["What is your name?" ,"Answer to question 1: ", "answer1"], ["What is your quest?" ,"Answer to question 2: ", "answer2"], ["What is your favorite color?" ,"Answer to question 3: ", "answer3"]],
     "editData": [
                     [
-                        ["Previous Username", "New Username"], 
-                        ["Previous Password", "New Password"], 
-                        ["Previous Email", "New Email"], 
-                        ["Previous Age", "New Age"]
+                        ["Username"], 
+                        ["Password"], 
+                        ["Email"], 
+                        ["Age"]
                     ],
                     [
-                        ["Previous Answer to Question 1", "New Answer to Question 1"], 
-                        ["Previous Answer to Question 2", "New Answer to Question 2"], 
-                        ["Previous Answer to Question 3", "New Answer to Question 3"]
+                        ["Answer to Question 1"], 
+                        ["Answer to Question 2"], 
+                        ["Answer to Question 3"]
                     ]
                 ],
     "homePage": ["Don't have an account? Click here!", "Create"],            
