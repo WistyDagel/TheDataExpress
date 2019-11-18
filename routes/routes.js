@@ -28,7 +28,7 @@ exports.index = (req, res) => {
         "username": config['formData'][0],
         "password": config['formData'][1],
         "noAccount": config['homePage'][0],
-        "config": config
+        config
     });
 };
 
@@ -110,11 +110,12 @@ exports.validateCredentials = (req, res) => {
                 if (result) {
                     req.session.user = {
                         isAuthenticated: true,
-                        username: req.body.username
+                        account
                     };
                     res.render('home', {
                         title: 'Home',
-                        account: account
+                        config,
+                        account
                     });
                 } else {
                     res.redirect('/');
@@ -126,7 +127,8 @@ exports.validateCredentials = (req, res) => {
 
 exports.home = (req, res) => {
     res.render('home', {
-        "config": config
+        config,
+        account: req.session.user.account
     });
 
     // res.send(`Authorized access: Welcome ${req.session.user.username}<br /><a href="/logout">Logout</a>`);
@@ -139,6 +141,12 @@ exports.home = (req, res) => {
 };
 
 exports.loggedOut = (req, res) => {
-    res.clearCookie('loggedIn');
-    res.redirect('/');
+    // res.clearCookie('loggedIn');
+    req.session.destroy(err => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/');
+        }
+    });
 }

@@ -1,7 +1,8 @@
 extends layout
 
 block content
-    h1 #{config.menu[3][0]}
+
+    h1 #{config.menu[3][0] + ', ' + account.username}
 
     a(href=config.menu[2][1])
         div(class='edit') Edit 
