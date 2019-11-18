@@ -3,13 +3,13 @@ extends layout
 block content
     h1 #{title}
 
-    form(id='form' method='post' action='/edit')
+    form(id='form' method='post')
         p #{username}
-            input(type='text', name='name')
+            input(type='text' name='username')
         p #{password}
-            input(type='text', name='name')
+            input(type='text' name='password')
         p
-            input(id='btn', type='submit', value='Log in')
+            input(id='btn' type='submit' value='Log In')
 
     a(href=config['menu'][1][1])
         div(class='create_account') #{noAccount}
