@@ -53,14 +53,6 @@ const createAccount = (req, res) => {
     });
     account.save((err, account) => {
         if (err) return console.error(err);
-        console.log(account._id);
-        console.log(account.username);
-        console.log(account.hashedPassword);
-        console.log(account.email);
-        console.log(account.age);
-        console.log(account.answer1);
-        console.log(account.answer2);
-        console.log(account.answer3);
     });
     res.redirect('/');
 };
@@ -97,16 +89,14 @@ exports.edit = (req, res) => {
 };
 
 exports.validateCredentials = (req, res) => {
-    console.log('\n' + req.body.username);
-    console.log(req.body.password);
-
     Account.findOne({'username': req.body.username}, function (err, account) {
         if (!account) {
+            console.log(`\nCould not find account '${req.body.username}'\n`);
             res.redirect('/');
         } else {
-            console.log(account);
             bcrypt.compare(req.body.password, account.hashedPassword, (err2, result) => {
-                console.log(result);
+                console.log(`\nFound account '${req.body.username}'`);
+                console.log(`Password does ${(result ? '' : 'not ')}match\n`);
                 if (result) {
                     req.session.user = {
                         isAuthenticated: true,
