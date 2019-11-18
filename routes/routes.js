@@ -66,3 +66,22 @@ exports.edit = (req, res) => {
         "questions": config['questions']
     });
 };
+
+exports.home = (req, res) => {
+    res.render('home', {
+        "config": config
+    });
+
+    // res.send(`Authorized access: Welcome ${req.session.user.username}<br /><a href="/logout">Logout</a>`);
+
+    // if(req.cookies.loggedIn === 'yes'){
+
+    // } else {
+    //     res.cookie('loggedIn', 'yes')
+    // }
+};
+
+exports.loggedOut = (req, res) => {
+    res.clearCookie('loggedIn');
+    res.redirect('/');
+}
