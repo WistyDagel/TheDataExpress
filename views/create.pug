@@ -2,7 +2,7 @@ extends layout
 
 block content
     h1 #{title[0]}
-    form(autocomplete='false' id='form' method='POST' action=`/`)
+    form(autocomplete='false' id='form' method='POST' action=`/create`)
         // Creates the form data stuff
         for data in formData
             p #{data}&nbsp;&nbsp;&nbsp;

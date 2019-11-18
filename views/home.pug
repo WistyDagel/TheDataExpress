@@ -1,4 +1,10 @@
 extends layout
 
 block content
-    h3 #{config['menu'][0][0]}
+    h1 #{config.menu[3][0]}
+
+    a(href=config.menu[2][1])
+        div(class='edit') Edit 
+
+    a(href=config.menu[4][1])
+        div(class='logout') Logout

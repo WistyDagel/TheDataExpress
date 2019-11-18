@@ -3,6 +3,7 @@
         ["Home", "/"],
         ["Create Your account", "create"],
         ["Edit Your Answers", "edit"],
+        ["Welcome", "home"],
         ["Logged Out", "loggedOut"],
         ["Meme", "meme"]
     ],

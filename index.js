@@ -32,6 +32,8 @@ app.use(expressSession({
 
 app.get('/', routes.index);
 app.get('/create', routes.create);
+app.get('/edit', routes.edit);
+app.post('/create', urlEncodedParser, routes.parseCreateData);
 app.post('/edit', urlEncodedParser, routes.edit);
 app.get('/home', checkAuth, routes.home);
 app.post('/home', routes.home);
