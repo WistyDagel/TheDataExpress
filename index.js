@@ -16,13 +16,13 @@ app.use(cookieParser('login'));
 
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 
-// const checkAuth = (req, res, next) => {
-//     if(req.session.user && req.session.user.isAuthenticated) {
-//         next();
-//     } else {
-//         res.redirect('/');
-//     }
-// }
+const checkAuth = (req, res, next) => {
+    if(req.session.user && req.session.user.isAuthenticated) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+}
 
 app.use(expressSession({
     secret: 'my5ecretpa55cod3',
@@ -33,21 +33,21 @@ app.use(expressSession({
 app.get('/', routes.index);
 app.get('/create', routes.create);
 app.post('/edit', urlEncodedParser, routes.edit);
-app.get('/home', routes.home);
+app.get('/home', checkAuth, routes.home);
+app.post('/home', routes.home);
 app.get('/loggedOut', routes.loggedOut);
 // app.get('/meme', routes.meme);
 
-// app.post('/', urlEncodedParser, (req, res) => {
-//     if(req.body.username == 'user' && req.body.password == 'pass'){
-//         req.session.user = {
-//             isAuthenticated: true,
-//             username: req.body.username
-//         };
-//         res.redirect('/home');
-//     }
-//     else{
-//         res.redirect('/');
-//     }
-// });
+app.post('/', urlEncodedParser, (req, res) => {
+    if(req.body.username == 'user' && req.body.password == 'pass'){
+        req.session.user = {
+            isAuthenticated: true,
+            username: req.body.username
+        };
+        res.redirect('/home');
+    } else {
+        res.redirect('/');
+    }
+});
 
 app.listen(3000);
