@@ -1,3 +1,3 @@
 @echo off
-start cmd.exe /c "db.bat"
+start cmd.exe /c "data\db.bat"
 nodemon

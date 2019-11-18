@@ -17,6 +17,7 @@ const urlEncodedParser = bodyParser.urlencoded({extended: false});
 
 app.get('/', routes.index);
 app.get('/create', routes.create);
+app.post('/create', urlEncodedParser, routes.parseCreateData);
 app.post('/edit', urlEncodedParser, routes.edit);
 // app.get('/loggedOut', routes.loggedOut);
 // app.get('/meme', routes.meme);
