@@ -23,12 +23,26 @@ var accountSchema = mongoose.Schema({
 var Account = mongoose.model('Account_Collection', accountSchema);
 
 exports.index = (req, res) => {
+    const cookie = () => {
+        res.cookie('lastVisit', new Date().toString(), {maxAge: 9999999999});
+    };
+    var visitMsg;
+    if(req.cookies.lastVisit) {
+        visitMsg = 'last visit: ' + req.cookies.lastVisit;
+        res.clearCookie('lastVisit');
+        cookie();
+    } else {
+        cookie();
+        visitMsg = 'This is your first time here!';
+    }
+
     res.render('index', {
         "title": config['menu'][0][0],
         "username": config['formData'][0],
         "password": config['formData'][1],
         "noAccount": config['homePage'][0],
-        config
+        config,
+        visitMsg
     });
 };
 
