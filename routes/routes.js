@@ -3,7 +3,7 @@ const config = require('../config');
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/data');
+mongoose.connect('mongodb://localhost/data', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const mdb = mongoose.connection;
 mdb.on('error', console.error.bind(console, 'connection error:'));
