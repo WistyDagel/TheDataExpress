@@ -5,11 +5,25 @@ block content
     form(autocomplete='false' id='form' method='POST' action=`/create`)
         // Creates the form data stuff
         for data in formData
-            p #{data}&nbsp;&nbsp;&nbsp;
                 if (data != 'Password') 
-                    input(type='text' name=data.toLowerCase() autocomplete='off')
+                    p #{data}&nbsp;&nbsp;&nbsp;
+                    input(type='text' name=data.toLowerCase() autocomplete='off' required='true')
                 else
-                    input(type="password" name=data.toLowerCase() autocomplete='off')
+                    p #{data}&nbsp;&nbsp;&nbsp;
+                    div(class='pass')
+                        input(id='password' type="password" name=data.toLowerCase() autocomplete='off' required='true')
+                        input(type='checkbox' onClick='togglePassword()')
+                        b Show Password
+                        script(type='text/javascript').
+                            function togglePassword() {
+                                var elem = document.getElementById('password');
+                                console.log(elem.type);
+                                if (elem.type === 'password') {
+                                    elem.type = 'text';
+                                } else {
+                                    elem.type = 'password';
+                                }
+                            }
 
         // Creates the questions
         for question in questions

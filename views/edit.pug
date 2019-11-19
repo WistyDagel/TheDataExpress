@@ -2,6 +2,7 @@ extends layout
 
 block content
     // Creates the form and populates it
+    h1 #{title}
     form(autocomplete="false" id='form' method="POST" action='/update')
         // New Form Data
         - var u = ["username", "password", "email", "age"]
@@ -9,9 +10,10 @@ block content
         each d, index in data
             h3 #{data[index][0]}&nbsp;&nbsp;&nbsp;&nbsp;
                 if (u[index] != "password") 
-                    input(type='text' name=u[index] value=pData[counter1] autocomplete='off')
+                    input(type='text' name=u[index] value=pData[counter1] autocomplete='off' required='true')
                 else
-                    input(id='password' type='password' name=u[index] autocomplete='off')
+                    input(id='password' type='password' name=u[index] autocomplete='off' required='true')
+                    p
                     input(type='checkbox' onClick='togglePassword()')
                     b Show Password
                     script(type='text/javascript').

@@ -1,11 +1,10 @@
 {
     "menu":[
-        ["Home", "/"],
-        ["Create Your account", "create"],
-        ["Edit Your Answers", "edit"],
+        ["Log In", "/"],
+        ["Create Your Account", "create"],
+        ["Edit Your Account", "edit"],
         ["Welcome", "home"],
-        ["Logged Out", "loggedOut"],
-        ["Meme", "meme"]
+        ["Logged Out", "loggedOut"]
     ],
     "questions": ["What is your name?", "What is your quest?", "What is your favorite color?"],
     "formData": ["Username", "Password", "Email", "Age"],

@@ -105,6 +105,10 @@ b {
     height: 30px;
 }
 
+.pass {
+    margin: 0px 0px 0px 130px;
+}
+
 #divider{
     background: transparent;
     width: auto;
