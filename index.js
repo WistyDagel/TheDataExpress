@@ -14,6 +14,18 @@ app.set('views', path.join(__dirname + '/views'));
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(cookieParser('login'));
 
+app.use(expressSession({
+    secret: 'my5ecretpa55cod3',
+    saveUninitialized: true,
+    resave: true
+}));
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 
 const checkAuth = (req, res, next) => {
@@ -23,12 +35,6 @@ const checkAuth = (req, res, next) => {
         res.redirect('/');
     }
 }
-
-app.use(expressSession({
-    secret: 'my5ecretpa55cod3',
-    saveUninitialized: true,
-    resave: true
-}));
 
 app.get('/', routes.index);
 app.get('/create', routes.create);

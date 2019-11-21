@@ -6,22 +6,26 @@
         ["Welcome", "home"],
         ["Logged Out", "loggedOut"]
     ],
-    "questions": ["What is your name?", "What is your quest?", "What is your favorite color?"],
+    "questions": [
+        "What is your name?",
+        "What is your quest?",
+        "What is your favorite color?"
+    ],
     "formData": ["Username", "Password", "Email", "Age"],
     "editData": [
                     [
-                        ["Username"], 
-                        ["Password"], 
+                        ["Username"],
+                        ["Password"],
                         ["Email"], 
                         ["Age"]
                     ],
                     [
-                        ["Answer to Question 1"], 
-                        ["Answer to Question 2"], 
+                        ["Answer to Question 1"],
+                        ["Answer to Question 2"],
                         ["Answer to Question 3"]
                     ]
                 ],
-    "homePage": ["Don't have an account? Click here!", "Create"],            
+    "homePage": ["Don't have an account? Click here!", "Create"],
     "answers": [
         ["Chris", "Dery", "Jeff", "Other"],
         ["To seek the Holy Grail", "Eat all the pizza", "Sleep n' stuff", "Other"],
