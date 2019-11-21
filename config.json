@@ -8,7 +8,6 @@
     ],
     "questions": ["What is your name?", "What is your quest?", "What is your favorite color?"],
     "formData": ["Username", "Password", "Email", "Age"],
-    "formQuestions": [["What is your name?" ,"Answer to question 1: ", "answer1"], ["What is your quest?" ,"Answer to question 2: ", "answer2"], ["What is your favorite color?" ,"Answer to question 3: ", "answer3"]],
     "editData": [
                     [
                         ["Username"], 
@@ -23,5 +22,9 @@
                     ]
                 ],
     "homePage": ["Don't have an account? Click here!", "Create"],            
-    "funnyResponses": ["Red no yel.... AHHHHHHHHHHHHHHHHHHHHHHHHH", ["African or European Swallow?", "What? I don't know that.... AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"]]
+    "answers": [
+        ["Chris", "Dery", "Jeff", "Other"],
+        ["To seek the Holy Grail", "Eat all the pizza", "Sleep n' stuff", "Other"],
+        ["Red", "Green", "Blue... No! Yel-AHHHHHHHHHHHHHHHHHHHHHHHHH", "Other"]
+    ]
 }

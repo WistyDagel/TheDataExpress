@@ -50,7 +50,8 @@ exports.create = (req, res) => {
     res.render('create', {
         "title": config['menu'][1],
         "edit": config['menu'][2],
-        "questions": config['formQuestions'],
+        "questions": config['questions'],
+        "answers": config['answers'],
         "formData": config['formData']
     });
 };
@@ -61,9 +62,9 @@ const createAccount = (req, res) => {
         hashedPassword: req.body.hashedPassword,
         email: req.body.email,
         age: req.body.age,
-        answer1: req.body.answer1,
-        answer2: req.body.answer2,
-        answer3: req.body.answer3
+        answer1: req.body.answers[0],
+        answer2: req.body.answers[1],
+        answer3: req.body.answers[2]
     });
     account.save((err, account) => {
         if (err) return console.error(err);
@@ -79,26 +80,27 @@ exports.parseCreateData = (req, res) => {
 }
 
 exports.edit = (req, res) => {
-    previousData = [
-        req.session.user.account.username, 
-        req.session.user.account.email, 
-        req.session.user.account.age, 
-    ]
+    res.send(req.body);
+    // previousData = [
+    //     req.session.user.account.username, 
+    //     req.session.user.account.email, 
+    //     req.session.user.account.age, 
+    // ]
     
-    previousAnswers = [
-        req.session.user.account.answer1, 
-        req.session.user.account.answer2, 
-        req.session.user.account.answer3
-    ]
+    // previousAnswers = [
+    //     req.session.user.account.answer1, 
+    //     req.session.user.account.answer2, 
+    //     req.session.user.account.answer3
+    // ]
 
-    res.render('edit', {
-        "pData": previousData,
-        "pAnswers": previousAnswers,
-        "title": config['menu'][2][0],
-        "data": config['editData'][0],
-        "answers": config['editData'][1],
-        "questions": config['questions']
-    });
+    // res.render('edit', {
+    //     "pData": previousData,
+    //     "pAnswers": previousAnswers,
+    //     "title": config['menu'][2][0],
+    //     "data": config['editData'][0],
+    //     "answers": config['editData'][1],
+    //     "questions": config['questions']
+    // });
 };
 
 exports.validateCredentials = (req, res) => {
@@ -165,8 +167,30 @@ exports.parseUpdateData = (req, res) => {
 const updateAccount = (req, res) => {
     var myQuery = { 'username': req.session.user.account.username };
     var newValues = { $set: {'username': req.body.username, 'hashedPassword': req.body.hashedPassword, 'email': req.body.email, 'age': req.body.age, 'answer1': req.body.answer1, 'answer2': req.body.answer2, 'answer3': req.body.answer3}};
-    Account.updateOne(myQuery, newValues, (err, result) =>{
+    Account.updateOne(myQuery, newValues, {upsert: true}, (err, result) =>{
         if (err) throw err;
     });
     res.redirect('/loggedOut');
 }
+
+exports.api = (req, res) => {
+    let answers = {"question1": {}, "question2": {}, "question3": {}};
+    
+    config['answers'].forEach((options, i) => {
+        options.forEach(answer => {
+            answers[`question${i+1}`][answer] = 0;
+        });
+    });
+
+    Account.find({}, (err, accounts) => {
+        if(err) throw err;
+
+        accounts.forEach(info => {
+            for (var i = 1; i <= 3; i++) {
+                answers[`question${i}`][info[`answer${i}`]] += 1;
+            }
+        })
+
+        res.json(answers);
+    });
+};
