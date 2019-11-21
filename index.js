@@ -38,9 +38,8 @@ const checkAuth = (req, res, next) => {
 
 app.get('/', routes.index);
 app.get('/create', routes.create);
-app.get('/edit', routes.edit);
+app.get('/edit', checkAuth, routes.edit);
 app.post('/create', urlEncodedParser, routes.parseCreateData);
-app.post('/edit', urlEncodedParser, routes.edit);
 app.get('/home', checkAuth, routes.home);
 app.post('/home', urlEncodedParser, routes.validateCredentials);
 app.get('/loggedOut', routes.loggedOut);

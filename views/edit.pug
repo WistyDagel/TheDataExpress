@@ -31,20 +31,25 @@ block content
 
         div(id='divider')
 
-            // Creates the questions
+            // New Answers
             for question, i in questions
                 h3 #{question}
                 br
                 select(name='answers')
                     each answer in answers[i]
-                        option(value=answer) #{answer}
+                        if (pAnswers[i] === answer)
+                            option(value=answer selected='selected') #{answer}
+                        else
+                            option(value=answer) #{answer}
 
-            //New Answers
-            - var counter = 1
-            each a, index in answers
-                h3 #{questions[index]}
-                p #{answers[index][0]}&nbsp;&nbsp;&nbsp;&nbsp;
-                    input(type='text' name=`answer${counter}` value=pAnswers[index] autocomplete='off')
-                - counter += 1
             p
+
+            //- //New Answers
+            //- - var counter = 1
+            //- each a, index in answers
+            //-     h3 #{questions[index]}
+            //-     p #{answers[index][0]}&nbsp;&nbsp;&nbsp;&nbsp;
+            //-         input(type='text' name=`answer${counter}` value=pAnswers[index] autocomplete='off')
+            //-     - counter += 1
+            //- p
             input(type='submit' name='submit' value='Update Account')
