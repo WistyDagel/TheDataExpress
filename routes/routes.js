@@ -174,7 +174,7 @@ const updateAccount = (req, res) => {
 }
 
 exports.api = (req, res) => {
-    let answers = {"question1": {}, "question2": {}, "question3": {}};
+    let answers = {"question1": {}, "question2": {}, "question3": {}, "total": 0};
     
     config['answers'].forEach((options, i) => {
         options.forEach(answer => {
@@ -189,6 +189,7 @@ exports.api = (req, res) => {
             for (var i = 1; i <= 3; i++) {
                 answers[`question${i}`][info[`answer${i}`]] += 1;
             }
+            answers['total'] += 1;
         })
 
         res.json(answers);
