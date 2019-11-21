@@ -174,24 +174,36 @@ const updateAccount = (req, res) => {
 }
 
 exports.api = (req, res) => {
-    let answers = {"question1": {}, "question2": {}, "question3": {}, "total": 0};
-    
+    // Initialize var to store api data. This does not include
+    // filling it with the proper values
+    var answers = {};
+    for (let i = 1; i <= config['answers'].length; i++) {
+        answers[`question${i}`] = {};
+    }
+    answers['total'] = 0;
+
+    // Fill each question Object with the possible answers and
+    // a default value/quantity of 0
     config['answers'].forEach((options, i) => {
         options.forEach(answer => {
             answers[`question${i+1}`][answer] = 0;
         });
     });
 
+    // Iterate over every account
     Account.find({}, (err, accounts) => {
         if(err) throw err;
 
+        // Increment the value assigned to any possible answer
+        // in var answers where account answers match the key
         accounts.forEach(info => {
-            for (var i = 1; i <= 3; i++) {
+            for (let i = 1; i <= 3; i++) {
                 answers[`question${i}`][info[`answer${i}`]] += 1;
             }
             answers['total'] += 1;
         })
 
+        // Return the answers data
         res.json(answers);
     });
 };
