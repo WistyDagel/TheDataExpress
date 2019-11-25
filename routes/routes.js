@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt-nodejs');
 const config = require('../config');
+const fetch = require('node-fetch');
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -213,7 +214,21 @@ exports.api = (req, res) => {
 exports.avatar = (req, res) => {
     var url = 'https://api.adorable.io/avatars/list';
 
-    res.render('avatar', {
-        "title": config.menu[5][0]
-    });
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        render(data);
+    })
+    .catch(err => console.log(err));
+
+    const render = data => {  
+        res.render('avatar', {
+            "title": config.menu[5][0],
+            "url": 'https://api.adorable.io/avatars/face/eyes1/nose1/mouth1/8e8895',
+            "types": config.avatar[0],
+            "eyes": data.face.eyes,
+            "noses" : data.face.nose,
+            "mouths": data.face.mouth            
+        });
+    };
 };
