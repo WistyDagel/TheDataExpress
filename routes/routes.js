@@ -94,6 +94,7 @@ exports.edit = (req, res) => {
     ]
 
     res.render('edit', {
+        config,
         "pData": previousData,
         "pAnswers": previousAnswers,
         "title": config['menu'][2][0],
@@ -206,5 +207,13 @@ exports.api = (req, res) => {
 
         // Return the answers data
         res.json(answers);
+    });
+};
+
+exports.avatar = (req, res) => {
+    var url = 'https://api.adorable.io/avatars/list';
+
+    res.render('avatar', {
+        "title": config.menu[5][0]
     });
 };

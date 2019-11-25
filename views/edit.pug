@@ -3,6 +3,10 @@ extends layout
 block content
     // Creates the form and populates it
     h1 #{title}
+
+    a(href=config.menu[5][1])
+        div(class='edit') Edit Avatar 
+
     form(autocomplete="false" id='form' method="POST" action='/update')
         // New Form Data
         - var u = ["username", "password", "email", "age"]
