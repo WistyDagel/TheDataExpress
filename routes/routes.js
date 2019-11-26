@@ -19,6 +19,7 @@ var accountSchema = mongoose.Schema({
     answer1: String,
     answer2: String,
     answer3: String,
+    avatarUrl: String
 });
 
 var Account = mongoose.model('Account_Collection', accountSchema);
@@ -65,7 +66,8 @@ const createAccount = (req, res) => {
         age: req.body.age,
         answer1: req.body.answers[0],
         answer2: req.body.answers[1],
-        answer3: req.body.answers[2]
+        answer3: req.body.answers[2],
+        avatarUrl: 'https://api.adorable.io/avatars/face/eyes1/nose1/mouth1/ffffff'
     });
     account.save((err, account) => {
         if (err) return console.error(err);
