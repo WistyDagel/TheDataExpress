@@ -6,24 +6,24 @@ block content
     div(class='image')
         img(src=avatarUrl, alt=avatarUrl class='avatarImg')
         
-    
-    div(class='selectType')
-            h3 #{types[0]}
-            select(name='eyes')
-                each eye in eyes
-                    option(value=eye selected='selected') #{eye}
-            p
-            h3 #{types[1]}
-            select(name='noses')
-                each nose in noses
-                    option(value=nose selected='selected') #{nose}
-            p
-            h3 #{types[2]}
-            select(name='mouths')
-                each mouth in mouths
-                    option(value=mouth selected='selected') #{mouth}
-            p
-            h3 #{types[3]}
-            input(type='text' name=color value='8e8895' autocomplete='off' required='true')  
-            p  
-            input(type='submit' name='submit' value='Update Avatar')
+    form(autocomplete="false" id='form' method="POST" action='/updateAvatar')
+        div(class='selectType')
+                h3 #{types[0]}
+                select(name='eyes')
+                    each eye in eyes
+                        option(value=eye selected='selected') #{eye}
+                p
+                h3 #{types[1]}
+                select(name='noses')
+                    each nose in noses
+                        option(value=nose selected='selected') #{nose}
+                p
+                h3 #{types[2]}
+                select(name='mouths')
+                    each mouth in mouths
+                        option(value=mouth selected='selected') #{mouth}
+                p
+                h3 #{types[3]}
+                input(type='text' name=color value='8e8895' autocomplete='off' required='true')  
+                p  
+                input(type='submit' name='submit' value='Update Avatar')

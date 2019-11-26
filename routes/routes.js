@@ -234,3 +234,7 @@ exports.avatar = (req, res) => {
         });
     };
 };
+
+exports.updateAvatar = (req, res) => {
+    
+};
