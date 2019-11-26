@@ -10,33 +10,33 @@ block content
         div(class='selectType')
             div(class='eye')
                 label #{types[0]}
-                select(name='eyes')
+                select(name='eye')
                     each eye in possibleEyes
                         if (eye === currentEye)
                             option(value=eye selected='selected') #{eye}
                         else 
                             option(value=eye) #{eye}
-            p
+            br
             div(class='nose')
                 label #{types[1]}
-                select(name='noses')
+                select(name='nose')
                     each nose in possibleNoses
                         if (nose === currentNose)
                             option(value=nose selected='selected') #{nose}
                         else 
                             option(value=nose) #{nose}
-            p
+            br
             div(class='mouth')
                 label #{types[2]}
-                select(name='mouths')
+                select(name='mouth')
                     each mouth in possibleMouths
                         if (nose === currentNose)
                             option(value=mouth selected='selected') #{mouth}
                         else 
                             option(value=mouth) #{mouth}
-            p
+            br
             div(class='color')
-            h3 #{types[3]}
-            input(type='text' name=color value=currentColor autocomplete='off' required='true')  
+                label #{types[3]}
+                input(type='text' name='color' value=currentColor autocomplete='off' required='true')  
             p  
             input(type='submit' name='submit' value='Update Avatar')
