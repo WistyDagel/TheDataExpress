@@ -8,31 +8,35 @@ block content
         
     form(autocomplete="false" id='form' method="POST" action='/updateAvatar')
         div(class='selectType')
-                h3 #{types[0]}
+            div(class='eye')
+                label #{types[0]}
                 select(name='eyes')
                     each eye in possibleEyes
                         if (eye === currentEye)
                             option(value=eye selected='selected') #{eye}
                         else 
                             option(value=eye) #{eye}
-                p
-                h3 #{types[1]}
+            p
+            div(class='nose')
+                label #{types[1]}
                 select(name='noses')
                     each nose in possibleNoses
                         if (nose === currentNose)
                             option(value=nose selected='selected') #{nose}
                         else 
                             option(value=nose) #{nose}
-                p
-                h3 #{types[2]}
+            p
+            div(class='mouth')
+                label #{types[2]}
                 select(name='mouths')
                     each mouth in possibleMouths
                         if (nose === currentNose)
                             option(value=mouth selected='selected') #{mouth}
                         else 
                             option(value=mouth) #{mouth}
-                p
-                h3 #{types[3]}
-                input(type='text' name=color value=currentColor autocomplete='off' required='true')  
-                p  
-                input(type='submit' name='submit' value='Update Avatar')
+            p
+            div(class='color')
+            h3 #{types[3]}
+            input(type='text' name=color value=currentColor autocomplete='off' required='true')  
+            p  
+            input(type='submit' name='submit' value='Update Avatar')

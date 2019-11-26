@@ -18,6 +18,11 @@ h3 {
     font-size: 20pt;
 }
 
+label {
+    font-family: inherit;
+    font-size: 20pt; 
+}
+
 a:link {
     text-decoration: none;
 }
@@ -119,4 +124,9 @@ b {
 
 .avatarImg {
     width: 220px;
+}
+
+.eye, .nose, .mouth {
+    display: inline-block;
+    padding: 50px;
 }
