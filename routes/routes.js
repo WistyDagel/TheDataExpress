@@ -169,7 +169,6 @@ exports.parseUpdateData = (req, res) => {
 }
 
 const updateAccount = (req, res) => {
-    console.log(req.body);
     var myQuery = { 'username': req.session.user.account.username };
     var newValues = { $set: {'username': req.body.username, 'hashedPassword': req.body.hashedPassword, 'email': req.body.email, 'age': req.body.age, 'answer1': req.body.answers[0], 'answer2': req.body.answers[1], 'answer3': req.body.answers[2]}};
     Account.updateOne(myQuery, newValues, {upsert: true}, (err, result) =>{
@@ -236,5 +235,7 @@ exports.avatar = (req, res) => {
 };
 
 exports.updateAvatar = (req, res) => {
-    
+    console.log(req.body);
+
+    res.redirect('/home');
 };
