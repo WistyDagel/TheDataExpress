@@ -116,3 +116,53 @@ b {
     border-bottom: 5px dotted darkgoldenrod;
     border-top: 5px dotted darkgoldenrod;
 }
+
+canvas {
+    background: transparent;
+}
+
+#graph1 {
+    width: 200px;
+    margin: 10px 10px 10px 50px;
+    height: 150px;
+    float: left;
+}
+
+#graph2 {
+    height: 150px;
+    width: 200px;
+    margin: 10px 10px 10px 400px;
+    float: left;
+}
+
+#graph3 {
+    height: 150px;
+    width: 200px;
+    margin: 10px 10px 10px 400px;
+    float: left;
+}
+
+.graphs1 {
+    height: 30px;
+    width: 200px;
+    font-size: 25px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+}
+.graphs2 {
+    height: 30px;
+    width: 300px;
+    font-size: 25px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+}
+.graphs3 {
+    height: 30px;
+    width: 500px;
+    font-size: 25px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+}

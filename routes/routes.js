@@ -42,7 +42,8 @@ exports.index = (req, res) => {
         "password": config['formData'][1],
         "noAccount": config['homePage'][0],
         config,
-        visitMsg
+        visitMsg,
+        "graphTitle": config.menu[6]
     });
 };
 
