@@ -39,6 +39,7 @@
     "chartTitles": [
         ["Question 1", ["Chris", "Dery", "Jeff", "Other"]],
         ["Question 2", ["To seek the Holy Grail", "Eat all the pizza", "Sleep n' stuff", "Other"]],
-        ["Question 3", ["Red", "Green", "Blue... No! Yel-AHHHHHHHHHHHHHHHHHHHHHHHHH", "Other"]]
+        ["Question 3", ["Red", "Green", "Blue... No! Yel-AHHHHHHHHHHHHHHHHHHHHHHHHH", "Other"]],
+        ["Eye Type: ", "Nose Type: ", "Mouth Type: ", "Color: "]
     ]
 }

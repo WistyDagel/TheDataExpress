@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt-nodejs');
 const config = require('../config');
+const fetch = require('node-fetch');
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -18,6 +19,7 @@ var accountSchema = mongoose.Schema({
     answer1: String,
     answer2: String,
     answer3: String,
+    avatarUrl: String
 });
 
 var Account = mongoose.model('Account_Collection', accountSchema);
@@ -65,7 +67,8 @@ const createAccount = (req, res) => {
         age: req.body.age,
         answer1: req.body.answers[0],
         answer2: req.body.answers[1],
-        answer3: req.body.answers[2]
+        answer3: req.body.answers[2],
+        avatarUrl: 'https://api.adorable.io/avatars/face/eyes1/nose1/mouth1/ffffff'
     });
     account.save((err, account) => {
         if (err) return console.error(err);
@@ -167,12 +170,8 @@ exports.parseUpdateData = (req, res) => {
 }
 
 const updateAccount = (req, res) => {
-    console.log(req.body);
-    var myQuery = { 'username': req.session.user.account.username };
     var newValues = { $set: {'username': req.body.username, 'hashedPassword': req.body.hashedPassword, 'email': req.body.email, 'age': req.body.age, 'answer1': req.body.answers[0], 'answer2': req.body.answers[1], 'answer3': req.body.answers[2]}};
-    Account.updateOne(myQuery, newValues, {upsert: true}, (err, result) =>{
-        if (err) throw err;
-    });
+    update({ 'username': req.session.user.account.username }, newValue);
     res.redirect('/loggedOut');
 }
 
@@ -214,7 +213,39 @@ exports.api = (req, res) => {
 exports.avatar = (req, res) => {
     var url = 'https://api.adorable.io/avatars/list';
 
-    res.render('avatar', {
-        "title": config.menu[5][0]
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        render(data);
+    })
+    .catch(err => console.log(err));
+
+    const render = data => {  
+        var avatarArray = req.session.user.account.avatarUrl.split('/');
+        console.log(avatarArray);
+        res.render('avatar', {
+            "title": config.menu[5][0],
+            "avatarUrl": req.session.user.account.avatarUrl,
+            "types": config.avatar[0],
+            "currentEye": avatarArray[5],
+            "possibleEyes": data.face.eyes,
+            "currentNose": avatarArray[6],
+            "possibleNoses" : data.face.nose,
+            "currentMouth": avatarArray[7],
+            "possibleMouths": data.face.mouth,
+            "currentColor": avatarArray[8]
+        });
+    };
+};
+
+exports.updateAvatar = (req, res) => {
+    var newValue = { $set: {'avatarUrl': `https://api.adorable.io/avatars/face/${req.body.eye}/${req.body.nose}/${req.body.mouth}/${req.body.color}`} };
+    update({ 'username': req.session.user.account.username }, newValue);
+    res.redirect('/');
+};
+
+const update = (query, set) => {
+    Account.updateOne(query, set, {upsert: true}, (err, result) =>{
+        if (err) throw err;
     });
 };

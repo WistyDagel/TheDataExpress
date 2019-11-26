@@ -18,6 +18,11 @@ h3 {
     font-size: 20pt;
 }
 
+label {
+    font-family: inherit;
+    font-size: 20pt; 
+}
+
 a:link {
     text-decoration: none;
 }
@@ -68,7 +73,7 @@ input[type=submit]:hover {
     font-size: xx-large;
     border:0 none;
     cursor:pointer;
-    width: 100px;
+    width: 150px;
     margin: 50px auto;
     border-radius: 100px;   
 }
@@ -109,7 +114,7 @@ b {
     margin: 0px 0px 0px 130px;
 }
 
-#divider{
+#divider {
     background: transparent;
     width: auto;
     height: 10px;
@@ -165,4 +170,12 @@ canvas {
     margin: 10px;
     text-align: center;
     color: white;
+}
+.avatarImg {
+    width: 220px;
+}
+
+.eye, .nose, .mouth, .color {
+    display: inline-block;
+    padding: 25px;
 }
