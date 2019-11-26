@@ -44,7 +44,7 @@ app.get('/home', checkAuth, routes.home);
 app.post('/home', urlEncodedParser, routes.validateCredentials);
 app.get('/loggedOut', routes.loggedOut);
 app.post('/update', urlEncodedParser, routes.parseUpdateData);
-app.get('/avatar', routes.avatar);
+app.get('/avatar', checkAuth, routes.avatar);
 
 app.get('/api', routes.api);
 // app.get('/meme', routes.meme);

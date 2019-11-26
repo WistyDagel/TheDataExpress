@@ -4,8 +4,10 @@ block content
 
     h1 #{config.menu[3][0] + ', ' + account.username}
 
+    img(src=account.avatarUrl rel=account.avatarUrl class='avatarImg')
+
     a(href=config.menu[2][1])
-        div(class='edit') Edit 
+        div(class='edit') Edit Account
 
     a(href=config.menu[4][1])
         div(class='logout') Logout

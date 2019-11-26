@@ -226,11 +226,11 @@ exports.avatar = (req, res) => {
     const render = data => {  
         res.render('avatar', {
             "title": config.menu[5][0],
-            "url": 'https://api.adorable.io/avatars/face/eyes1/nose1/mouth1/8e8895',
+            "avatarUrl": req.session.user.account.avatarUrl,
             "types": config.avatar[0],
             "eyes": data.face.eyes,
             "noses" : data.face.nose,
-            "mouths": data.face.mouth            
+            "mouths": data.face.mouth
         });
     };
 };

@@ -68,7 +68,7 @@ input[type=submit]:hover {
     font-size: xx-large;
     border:0 none;
     cursor:pointer;
-    width: 100px;
+    width: 150px;
     margin: 50px auto;
     border-radius: 100px;   
 }
@@ -109,10 +109,14 @@ b {
     margin: 0px 0px 0px 130px;
 }
 
-#divider{
+#divider {
     background: transparent;
     width: auto;
     height: 10px;
     border-bottom: 5px dotted darkgoldenrod;
     border-top: 5px dotted darkgoldenrod;
+}
+
+.avatarImg {
+    width: 220px;
 }
