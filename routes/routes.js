@@ -220,13 +220,19 @@ exports.avatar = (req, res) => {
     .catch(err => console.log(err));
 
     const render = data => {  
+        var avatarArray = req.session.user.account.avatarUrl.split('/');
+        console.log(avatarArray);
         res.render('avatar', {
             "title": config.menu[5][0],
             "avatarUrl": req.session.user.account.avatarUrl,
             "types": config.avatar[0],
-            "eyes": data.face.eyes,
-            "noses" : data.face.nose,
-            "mouths": data.face.mouth
+            "currentEye": avatarArray[5],
+            "possibleEyes": data.face.eyes,
+            "currentNose": avatarArray[6],
+            "possibleNoses" : data.face.nose,
+            "currentMouth": avatarArray[7],
+            "possibleMouths": data.face.mouth,
+            "currentColor": avatarArray[8]
         });
     };
 };
