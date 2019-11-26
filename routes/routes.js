@@ -169,11 +169,8 @@ exports.parseUpdateData = (req, res) => {
 }
 
 const updateAccount = (req, res) => {
-    var myQuery = { 'username': req.session.user.account.username };
     var newValues = { $set: {'username': req.body.username, 'hashedPassword': req.body.hashedPassword, 'email': req.body.email, 'age': req.body.age, 'answer1': req.body.answers[0], 'answer2': req.body.answers[1], 'answer3': req.body.answers[2]}};
-    Account.updateOne(myQuery, newValues, {upsert: true}, (err, result) =>{
-        if (err) throw err;
-    });
+    update({ 'username': req.session.user.account.username }, newValue);
     res.redirect('/loggedOut');
 }
 
@@ -241,7 +238,13 @@ exports.avatar = (req, res) => {
 };
 
 exports.updateAvatar = (req, res) => {
-    console.log(req.body);
+    var newValue = { $set: {'avatarUrl': `https://api.adorable.io/avatars/face/${req.body.eye}/${req.body.nose}/${req.body.mouth}/${req.body.color}`} };
+    update({ 'username': req.session.user.account.username }, newValue);
+    res.redirect('/');
+};
 
-    res.redirect('/home');
+const update = (query, set) => {
+    Account.updateOne(query, set, {upsert: true}, (err, result) =>{
+        if (err) throw err;
+    });
 };

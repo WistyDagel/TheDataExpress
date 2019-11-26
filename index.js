@@ -37,11 +37,11 @@ const checkAuth = (req, res, next) => {
 }
 
 app.get('/', routes.index);
+app.post('/login', urlEncodedParser, routes.validateCredentials)
 app.get('/create', routes.create);
 app.get('/edit', checkAuth, routes.edit);
 app.post('/create', urlEncodedParser, routes.parseCreateData);
 app.get('/home', checkAuth, routes.home);
-app.post('/home', urlEncodedParser, routes.validateCredentials);
 app.get('/loggedOut', routes.loggedOut);
 app.post('/update', urlEncodedParser, routes.parseUpdateData);
 app.get('/avatar', checkAuth, routes.avatar);
