@@ -6,6 +6,10 @@ block content
 
     img(src=account.avatarUrl rel=account.avatarUrl class='avatarImg')
 
+    h3 #{config.formData[0] + ": " + account.username}
+    h3 #{config.formData[2] + ": " + account.email}
+    h3 #{config.formData[3] + ": " + account.age}
+
     a(href=config.menu[2][1])
         div(class='edit') Edit Account
 
