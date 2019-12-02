@@ -114,6 +114,10 @@ b {
     margin: 0px 0px 0px 130px;
 }
 
+#invalid {
+    color: rgb(255, 0, 0);
+}
+
 #divider {
     background: transparent;
     width: auto;

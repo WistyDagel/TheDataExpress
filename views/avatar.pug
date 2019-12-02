@@ -4,13 +4,13 @@ block content
     h1 #{title}
 
     div(class='image')
-        img(src=avatarUrl, alt=avatarUrl class='avatarImg')
+        img(src=avatarUrl, alt=avatarUrl id='avImg' class='avatarImg')
         
     form(autocomplete="false" id='form' method="POST" action='/updateAvatar')
         div(class='selectType')
             div(class='eye')
                 label #{types[0]}
-                select(name='eye')
+                select(name='eye' id='eye' onChange="change()")
                     each eye in possibleEyes
                         if (eye === currentEye)
                             option(value=eye selected='selected') #{eye}
@@ -19,7 +19,7 @@ block content
             br
             div(class='nose')
                 label #{types[1]}
-                select(name='nose')
+                select(name='nose' id='nose' onChange="change()")
                     each nose in possibleNoses
                         if (nose === currentNose)
                             option(value=nose selected='selected') #{nose}
@@ -28,15 +28,36 @@ block content
             br
             div(class='mouth')
                 label #{types[2]}
-                select(name='mouth')
+                select(name='mouth' id='mouth' onChange="change()")
                     each mouth in possibleMouths
-                        if (nose === currentNose)
+                        if (mouth === currentMouth)
                             option(value=mouth selected='selected') #{mouth}
                         else 
                             option(value=mouth) #{mouth}
             br
             div(class='color')
                 label #{types[3]}
-                input(type='text' name='color' value=currentColor autocomplete='off' required='true')  
+                input(type='text' id='color' name='color' value=currentColor autocomplete='off' required='true' onChange="change()")  
+                h4(id="invalid" style="display: none") #{'Invalid Color'}
             p  
             input(type='submit' name='submit' value='Update Avatar')
+    script(type='text/javascript').
+        function change() {
+            let eye = document.getElementById('eye');
+            let selectedEye = eye.options[eye.selectedIndex].value;
+            let nose = document.getElementById('nose');
+            let selectedNose = nose.options[nose.selectedIndex].value;
+            let mouth = document.getElementById('mouth');
+            let selectedMouth = mouth.options[mouth.selectedIndex].value;
+            let color = document.getElementById('color');
+            let selectedColor = color.value;
+
+            var regex = /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/igm;            
+            if(regex.test(selectedColor)){
+                document.getElementById('invalid').style.display = 'none';
+                document.getElementById('avImg').src = `https://api.adorable.io/avatars/face/${selectedEye}/${selectedNose}/${selectedMouth}/${selectedColor}`;  
+            } else {
+                document.getElementById('invalid').style.display = 'block';
+            }
+        }
+
