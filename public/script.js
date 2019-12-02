@@ -104,39 +104,51 @@ const getRadians = (data, counter) => {
 const fillDivInfo = (list, total, questions) => {
     if (questions['Chris']) {
         g1_1.style.background = colors[0];
-        g1_info1.innerHTML = `${Math.round((list[0]/total)*100)}&#37 Chris`
+        g1_1.style.color = "#ffffff";
+        g1_info1.innerHTML = `${Math.round((list[0]/total)*100)}&#37 Chris`;
 
         g1_2.style.background = colors[1];
-        g1_info2.innerHTML = `${Math.round((list[1]/total)*100)}&#37 Dery`
+        g1_2.style.color = "#000000";
+        g1_info2.innerHTML = `${Math.round((list[1]/total)*100)}&#37 Dery`;
 
         g1_3.style.background = colors[2];
-        g1_info3.innerHTML = `${Math.round((list[2]/total)*100)}&#37 Jeff`
+        g1_3.style.color = "#ffffff";
+        g1_info3.innerHTML = `${Math.round((list[2]/total)*100)}&#37 Jeff`;
         
         g1_4.style.background = colors[3];
-        g1_info4.innerHTML = `${Math.round((list[3]/total)*100)}&#37 Other`
+        g1_4.style.color = "#ffffff";
+        g1_info4.innerHTML = `${Math.round((list[3]/total)*100)}&#37 Other`;
     } else if (questions["To seek the Holy Grail"]) {
         g2_1.style.background = colors[0];
-        g2_info1.innerHTML = `${Math.round((list[0]/total)*100)}&#37 To seek the Holy Grail`
+        g2_1.style.color = "#ffffff";
+        g2_info1.innerHTML = `${Math.round((list[0]/total)*100)}&#37 To seek the Holy Grail`;
 
         g2_2.style.background = colors[1];
-        g2_info2.innerHTML = `${Math.round((list[1]/total)*100)}&#37 Eat all the pizza`
+        g2_2.style.color = "#000000";
+        g2_info2.innerHTML = `${Math.round((list[1]/total)*100)}&#37 Eat all the pizza`;
 
         g2_3.style.background = colors[2];
-        g2_info3.innerHTML = `${Math.round((list[2]/total)*100)}&#37 Sleep n' stuff`
+        g2_3.style.color = "#ffffff";
+        g2_info3.innerHTML = `${Math.round((list[2]/total)*100)}&#37 Sleep n' stuff`;
         
         g2_4.style.background = colors[3];
-        g2_info4.innerHTML = `${Math.round((list[3]/total)*100)}&#37 Other`
+        g2_4.style.color = "#ffffff";
+        g2_info4.innerHTML = `${Math.round((list[3]/total)*100)}&#37 Other`;
     } else {
         g3_1.style.background = colors[0];
+        g3_1.style.color = "#ffffff";        
         g3_info1.innerHTML = `${Math.round((list[0]/total)*100)}&#37 Red`
 
         g3_2.style.background = colors[1];
+        g3_2.style.color = "#000000";
         g3_info2.innerHTML = `${Math.round((list[1]/total)*100)}&#37 Green`
 
         g3_3.style.background = colors[2];
+        g3_3.style.color = "#ffffff";
         g3_info3.innerHTML = `${Math.round((list[2]/total)*100)}&#37 Blue... No! Yel-AHHHHHHHHHHHHHHHHHHHHHHHHH`
         
         g3_4.style.background = colors[3];
+        g3_4.style.color = "#ffffff";
         g3_info4.innerHTML = `${Math.round((list[3]/total)*100)}&#37 Other`
     }
 };
