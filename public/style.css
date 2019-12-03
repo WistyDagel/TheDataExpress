@@ -114,6 +114,10 @@ b {
     margin: 0px 0px 0px 130px;
 }
 
+#invalid {
+    color: rgb(255, 0, 0);
+}
+
 #divider {
     background: transparent;
     width: auto;
@@ -153,7 +157,6 @@ canvas {
     font-size: 25px;
     margin: 10px;
     text-align: center;
-    color: white;
 }
 .graphs2 {
     height: 30px;
@@ -161,7 +164,6 @@ canvas {
     font-size: 25px;
     margin: 10px;
     text-align: center;
-    color: white;
 }
 .graphs3 {
     height: 30px;
@@ -169,7 +171,6 @@ canvas {
     font-size: 25px;
     margin: 10px;
     text-align: center;
-    color: white;
 }
 .avatarImg {
     width: 220px;

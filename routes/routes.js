@@ -222,7 +222,6 @@ exports.avatar = (req, res) => {
 
     const render = data => {  
         var avatarArray = req.session.user.account.avatarUrl.split('/');
-        console.log(avatarArray);
         res.render('avatar', {
             "title": config.menu[5][0],
             "avatarUrl": req.session.user.account.avatarUrl,
