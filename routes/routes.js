@@ -171,7 +171,7 @@ exports.parseUpdateData = (req, res) => {
 
 const updateAccount = (req, res) => {
     var newValues = { $set: {'username': req.body.username, 'hashedPassword': req.body.hashedPassword, 'email': req.body.email, 'age': req.body.age, 'answer1': req.body.answers[0], 'answer2': req.body.answers[1], 'answer3': req.body.answers[2]}};
-    update({ 'username': req.session.user.account.username }, newValue);
+    update({ 'username': req.session.user.account.username }, newValues);
     res.redirect('/loggedOut');
 }
 
