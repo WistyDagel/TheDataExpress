@@ -88,7 +88,7 @@ exports.edit = (req, res) => {
     previousData = [
         req.session.user.account.username, 
         req.session.user.account.email, 
-        req.session.user.account.age, 
+        req.session.user.account.age
     ]
     
     previousAnswers = [
@@ -101,6 +101,7 @@ exports.edit = (req, res) => {
         config,
         "pData": previousData,
         "pAnswers": previousAnswers,
+        "avatarUrl": req.session.user.account.avatarUrl,
         "title": config['menu'][2][0],
         "data": config['editData'][0],
         "answers": config['answers'],
@@ -222,6 +223,7 @@ exports.avatar = (req, res) => {
 
     const render = data => {  
         var avatarArray = req.session.user.account.avatarUrl.split('/');
+        console.log(avatarArray);
         res.render('avatar', {
             "title": config.menu[5][0],
             "avatarUrl": req.session.user.account.avatarUrl,
